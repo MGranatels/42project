@@ -1,44 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations2.c                                      :+:      :+:    :+:   */
+/*   array.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 15:29:59 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/11 20:48:05 by mgranate_ls      ###   ########.fr       */
+/*   Created: 2022/04/11 20:34:19 by mgranate_ls       #+#    #+#             */
+/*   Updated: 2022/04/11 20:44:28 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	op_ra(t_stack **stack_a)
+void	insertion_sort(int arr[], int n)
 {
-	ft_rotate(stack_a);
-	ft_printf("ra\n");
+	int	i;
+	int	key;
+	int	j;
+
+	i = 0;
+	while (++i < n)
+	{
+		key = arr[i];
+		j = i - 1;
+		while (j >= 0 && arr[j] > key)
+		{
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = key;
+	}
 }
 
-void	op_rb(t_stack **stack_b)
+int	*insert_array(t_stack *stack_a, int argms)
 {
-	ft_rotate(stack_b);
-	ft_printf("rb\n");
-}
+	int	*arr;
+	int	i;
 
-void	op_rr(t_stack **stack_a, t_stack **stack_b)
-{
-	ft_rotate(stack_a);
-	ft_rotate2(stack_b);
-	ft_printf("rr\n");
-}
-
-void	op_rra(t_stack **stack_a)
-{
-	ft_rotate2(stack_a);
-	ft_printf("rra\n");
-}
-
-void	op_rrb(t_stack **stack_b)
-{
-	ft_rotate2(stack_b);
-	ft_printf("rrb\n");
+	arr = malloc(sizeof(int) * argms + 1);
+	i = 0;
+	while (stack_a)
+	{
+		arr[i++] = stack_a->num;
+		stack_a = stack_a->next;
+	}
+	insertion_sort(arr, i);
+	return (arr);
 }

@@ -3,65 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_alg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:59:45 by mgranate          #+#    #+#             */
-/*   Updated: 2022/03/31 18:05:33 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:45:32 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	insertion_sort(int arr[], int n)
-{
-	int	i;
-	int	key;
-	int	j;
-
-	i = 0;
-	while (++i < n)
-	{
-		key = arr[i];
-		j = i - 1;
-		while (j >= 0 && arr[j] > key)
-		{
-			arr[j + 1] = arr[j];
-			j--;
-		}
-		arr[j + 1] = key;
-	}
-}
-
-int	*insert_array(t_stack *stack_a, int argms)
-{
-	int	*arr;
-	int	i;
-
-	arr = malloc(sizeof(int) * argms + 1);
-	i = 0;
-	while (stack_a)
-	{
-		arr[i++] = stack_a->num;
-		stack_a = stack_a->next;
-	}
-	insertion_sort(arr, i);
-	return (arr);
-}
-
-int	count_elements(t_stack **stack)
-{
-	int		count;
-	t_stack	*tmp;
-
-	count = 0;
-	tmp = (*stack);
-	while (tmp)
-	{
-		count++;
-		tmp = tmp->next;
-	}
-	return (count);
-}
 
 int	check_sorted_list(t_stack *stack)
 {
@@ -77,4 +27,32 @@ int	check_sorted_list(t_stack *stack)
 		stack = stack->next;
 	}
 	return (i);
+}
+
+void	short_sort(t_stack **stack_a)
+{
+	t_stack	*tmp;
+
+	tmp = (*stack_a)->next;
+	if (((*stack_a)->num > tmp->num) && (tmp->num < tmp->next->num)
+		&& ((*stack_a)->num < tmp->next->num))
+		op_sa(stack_a);
+	else if ((*stack_a)->num < tmp->num && tmp->num > tmp->next->num
+		&& (*stack_a)->num < tmp->next->num)
+	{
+		op_sa(stack_a);
+		op_ra(stack_a);
+	}
+	else if ((*stack_a)->num > tmp->num && tmp->num > tmp->next->num
+		&& (*stack_a)->num > tmp->next->num)
+	{
+		op_sa(stack_a);
+		op_rra(stack_a);
+	}
+	else if ((*stack_a)->num > tmp->num && tmp->num < tmp->next->num
+		&& (*stack_a)->num > tmp->next->num)
+		op_ra(stack_a);
+	else if ((*stack_a)->num < tmp->num && tmp->num > tmp->next->num
+		&& (*stack_a)->num > tmp->next->num)
+		op_rra(stack_a);
 }

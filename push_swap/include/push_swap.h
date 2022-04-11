@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:53:22 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/08 18:49:56 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/11 20:45:25 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <ctype.h>
 # include "../libft/libft.h"
 # include <stdio.h>
+# include "../printf/ft_printf.h"
 
 typedef struct s_stack
 {

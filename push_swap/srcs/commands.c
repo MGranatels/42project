@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:03:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/03/31 16:15:50 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:48:50 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdlib.h>
 
 void	ft_swap(t_stack *node)
 {

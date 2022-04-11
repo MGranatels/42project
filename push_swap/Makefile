@@ -6,6 +6,9 @@ CC			=	clang
 LIB_DIR		=	libft/
 LIB			=	libft.a
 
+PRINT_DIR	= printf/
+PRINT		= libftprintf.a
+
 DIR			=	srcs/
 OBJ_DIR		=	obj/
 SUB_DIR		=	obj/ps_srcs obj/c_srcs
@@ -15,8 +18,9 @@ FLAG		=	-c			\
 				-Wextra		\
 				-Werror
 
-INCLUDE		=	-I include/					\
-				-I $(LIB_DIR)
+INCLUDE		=	-I include/				\
+				-I $(LIB_DIR)			\
+				-I $(PRINT_DIR)
 
 RM			=	/bin/rm -f
 
@@ -26,7 +30,8 @@ PS_FILES	=	commands.c			\
 				operations2.c		\
 				operations3.c		\
 				push_swap.c			\
-				sorting_alg.c
+				sorting_alg.c		\
+				array.c
 
 # C_FILES		=	c_srcs/c_main.c	
 
@@ -46,7 +51,11 @@ $(LIB)		:
 				@$(MAKE) -C $(LIB_DIR)
 				/bin/mv $(LIB_DIR)$(LIB) .
 
-$(PS_NAME)	:	$(PS_OBJ) $(LIB)
+$(PRINT)		:	
+				@$(MAKE) -C $(PRINT_DIR)
+				/bin/mv $(PRINT_DIR)$(PRINT) .
+
+$(PS_NAME)	:	$(PS_OBJ) $(LIB) $(PRINT)
 				$(CC) -o $@ $^
 
 # $(C_NAME)	:	$(C_OBJ) $(LIB)
@@ -61,6 +70,8 @@ clean		:
 fclean		:	clean
 				@$(MAKE) fclean -C $(LIB_DIR)
 				@$(RM) $(LIB)
+				@$(MAKE) fclean -C $(PRINT_DIR)
+				@$(RM) $(PRINT)
 				@$(RM) $(PS_NAME)
 				# @$(RM) $(C_NAME)
 

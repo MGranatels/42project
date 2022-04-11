@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:21:57 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/11 19:31:03 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/11 20:45:22 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int	main(int ac, char **av)
 	argms = ac - 1;
 	stack_b = NULL;
 	stack_a = add_elements_to_list(ac, av);
+	if (!stack_a)
+		return (0);
 	arr = insert_array(stack_a, argms);
 	i = check_sorted_list(stack_a);
 	//short_sort(&stack_a);
@@ -104,4 +106,4 @@ int	main(int ac, char **av)
 	}*/
 	printlist(stack_a, "A");
 	printlist(stack_b, "B");
-}
+} 	
