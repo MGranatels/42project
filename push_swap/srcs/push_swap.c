@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:21:57 by mgranate          #+#    #+#             */
-/*   Updated: 2022/03/31 18:56:53 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/11 19:31:03 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	organize_any_element(t_stack **stack_a, t_stack **stack_b)
+/*void	organize_any_element(t_stack **stack_a, t_stack **stack_b)
 {
 	if (*stack_b == NULL)
 	{
@@ -38,33 +38,47 @@ void	organize_any_element(t_stack **stack_a, t_stack **stack_b)
 				op_sa(stack_a);
 		}
 	}
-}
+}*/
 
-void	
-	test_sorting(t_stack **stack_a, t_stack **stack_b, int arr[], int n, int argm)
+void	organize_any_element(t_stack **stack_a, t_stack **stack_b, int *arr)
 {
-	int		i;
-	t_stack	*tmp;
+	int	i;
+	int j;
 
+	j = 0;
 	i = 0;
-	tmp = (*stack_a);
-	while (tmp)
+	if (*stack_b == NULL)
 	{
-		if ((tmp)->num == arr[n])
+		while (*stack_a)
 		{
-			if (i > n / 2)
+			printf("List Number : %d\n", (*stack_a)->num);
+			if ((*stack_a)->num == arr[j])
 			{
-				while (i > 0)
+				if (i > 5)
 				{
-					op_ra(stack_a);
-					i--;
+					while (i < 10)
+					{
+						op_rra(stack_a);
+						printlist((*stack_a), "LIST A");
+						i++;
+					}
+					op_pb(stack_a, stack_b);
+					break;
+				}
+				else
+				{
+					while(i > 0)
+					{
+						op_ra(stack_a);
+						i--;
+					}
+					op_pb(stack_a, stack_b);
+					break;
 				}
 			}
-			op_pb(stack_b, stack_a);
-			i = 0;
+			(*stack_a) = (*stack_a)->next;
+			i++;
 		}
-		(tmp) = (tmp)->next;
-		i++;
 	}
 }
 
@@ -75,25 +89,19 @@ int	main(int ac, char **av)
 	int		argms;
 	int		*arr;
 	int		i;
-	int		n;
-
+	
 	i = 0;
-	n = 0;
 	argms = ac - 1;
 	stack_b = NULL;
 	stack_a = add_elements_to_list(ac, av);
 	arr = insert_array(stack_a, argms);
-	printlist(stack_a, "A");
-	while (n < argms)
-	{
-		test_sorting(&stack_a, &stack_b, arr, n, argms);
-		n++;
-	}
-	while (!i)
+	i = check_sorted_list(stack_a);
+	//short_sort(&stack_a);
+	/*while(!i)
 	{
 		organize_any_element(&stack_a, &stack_b);
 		i = check_sorted_list(stack_a);
-	}
+	}*/
 	printlist(stack_a, "A");
 	printlist(stack_b, "B");
 }

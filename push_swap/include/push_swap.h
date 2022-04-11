@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:53:22 by mgranate          #+#    #+#             */
-/*   Updated: 2022/03/31 18:27:45 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:49:56 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ void	insertion_sort(int arr[], int n);
 int		*insert_array(t_stack *stack_a, int argms);
 int		check_sorted_list(t_stack *stack);
 int		count_elements(t_stack **stack);
+int		ft_atoi(const char *str);
 
-t_stack	*create_new_node(void);
+t_stack	*create_new_node();
 t_stack	*add_elements_to_list(int ac, char **av);
 
 #endif
