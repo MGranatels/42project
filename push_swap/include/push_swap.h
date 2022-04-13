@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:53:22 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/11 20:45:25 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/13 11:38:26 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,13 @@ void	add_front(t_stack **top, t_stack *n);
 void	printlist(t_stack *n, char *list);
 void	short_sort(t_stack **stack_a);
 void	insertion_sort(int arr[], int n);
+void	organize_any_element(t_stack **stack_a, t_stack **stack_b, int *arr, int j);
 
+int		is_valid_arg(char *str);
+int		get_size_stack(t_stack *s);
+int		has_duplicates(t_stack *s);
 int		*insert_array(t_stack *stack_a, int argms);
 int		check_sorted_list(t_stack *stack);
-int		count_elements(t_stack **stack);
 int		ft_atoi(const char *str);
 
 t_stack	*create_new_node();

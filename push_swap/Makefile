@@ -31,6 +31,7 @@ PS_FILES	=	commands.c			\
 				operations3.c		\
 				push_swap.c			\
 				sorting_alg.c		\
+				check_arguments.c	\
 				array.c
 
 # C_FILES		=	c_srcs/c_main.c	

@@ -56,3 +56,51 @@ void	short_sort(t_stack **stack_a)
 		&& (*stack_a)->num > tmp->next->num)
 		op_rra(stack_a);
 }
+
+void	help_organize(int i, t_stack **stack_a, t_stack **stack_b)
+{
+	if (i > (get_size_stack(*stack_a) / 2))
+	{
+		while (i < get_size_stack(*stack_a))
+		{
+			op_rra(stack_a);
+			i++;
+		}
+		op_pb(stack_b, stack_a);
+	}
+	else
+	{
+		while (i != 0)
+		{
+			op_ra(stack_a);
+			i--;
+		}
+		op_pb(stack_b, stack_a);
+	}
+}
+
+void	
+	organize_any_element(t_stack **stack_a, t_stack **stack_b, int *arr, int j)
+{
+	int	i;
+	t_stack	*tmp;
+
+	tmp = (*stack_a);
+	i = 0;
+	while(tmp != NULL)
+	{
+		if (tmp->num == arr[j])
+		{
+			help_organize(i, stack_a, stack_b);
+			i = 0;
+		}
+		if ((*stack_a)->next->next == NULL)
+		{
+			op_pb(stack_b, stack_a);
+			op_pb(stack_b, stack_a);
+			break ;
+		}
+		i++;
+		tmp = tmp->next;
+	}
+}
