@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nodes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:16:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/14 10:24:29 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/15 19:42:17 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	printlist(t_stack *n, char *list)
 
 t_stack	*create_new_node(int value)
 {
-	t_stack *s;
+	t_stack	*s;
 
 	s = (t_stack *)malloc(sizeof(t_stack));
 	if (!s)
@@ -44,23 +44,24 @@ void	clean_split(char **split)
 	{
 		free(split[i]);
 		i++;
- 	}
+	}
 	free(split);
 }
 
 void	clean_stack(t_stack	*s)
 {
-	t_stack *temp;
-    if (s) 
+	t_stack	*temp;
+
+	if (s)
 	{
-        s->next = 0;
-        while (s) 
+		s->next = 0;
+		while (s)
 		{
-            temp = s->next;
-            free(s);
-            s = temp;
-        }
-    }
+			temp = s->next;
+			free(s);
+			s = temp;
+		}
+	}
 }
 
 t_stack	*add_elements_to_list2(char **split, t_stack *head, t_stack *stack)
