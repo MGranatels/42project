@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:16:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/12 09:15:34 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/14 10:24:29 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ t_stack	*create_new_node(int value)
 	return (s);
 }
 
-
 void	clean_split(char **split)
 {
 	int	i;
@@ -45,7 +44,7 @@ void	clean_split(char **split)
 	{
 		free(split[i]);
 		i++;
-	}
+ 	}
 	free(split);
 }
 
@@ -94,7 +93,7 @@ t_stack	*add_elements_to_list(int ac, char **av)
 	t_stack  *head;
 
 	stack = NULL;
-	head = NULL;
+ 		head = NULL;
 	while (--ac > 0)
 	{
 		split = ft_split(av[ac], ' ');

@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:59:45 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/11 20:45:32 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/14 11:09:31 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_sorted_list(t_stack *stack)
 	return (i);
 }
 
-void	short_sort(t_stack **stack_a)
+/*void	short_sort(t_stack **stack_a)
 {
 	t_stack	*tmp;
 
@@ -55,9 +55,9 @@ void	short_sort(t_stack **stack_a)
 	else if ((*stack_a)->num < tmp->num && tmp->num > tmp->next->num
 		&& (*stack_a)->num > tmp->next->num)
 		op_rra(stack_a);
-}
+}*/
 
-void	help_organize(int i, t_stack **stack_a, t_stack **stack_b)
+/*void	help_organize(int i, t_stack **stack_a, t_stack **stack_b)
 {
 	if (i > (get_size_stack(*stack_a) / 2))
 	{
@@ -99,6 +99,67 @@ void
 			op_pb(stack_b, stack_a);
 			op_pb(stack_b, stack_a);
 			break ;
+		}
+		i++;
+		tmp = tmp->next;
+	}
+}*/
+void	check_stack_b(t_stack **stack_b)
+{
+	if ((*stack_b)->next == NULL)
+		return ;
+	else if ((*stack_b)->num < (*stack_b)->next->num)
+		op_sb(stack_b);
+}
+
+void	help_organize(int i, t_stack **stack_a, t_stack **stack_b)
+{
+	if (i > (get_size_stack(*stack_a) / 2))
+	{
+		while (i < get_size_stack(*stack_a))
+		{
+			op_rra(stack_a);
+			i++;
+		}
+		op_pb(stack_b, stack_a);
+		check_stack_b(stack_b);
+	}
+	else
+	{
+		while (i != 0)
+		{
+			op_ra(stack_a);
+			i--;
+		}
+		op_pb(stack_b, stack_a);
+		check_stack_b(stack_b);
+	}
+}
+
+void	
+	organize_any_element(t_stack **stack_a, t_stack **stack_b, int *arr, int j)
+{
+	int		i;
+	int		k;
+	int		x;
+	t_stack	*tmp;
+
+	i = 0;
+	k = j + 1;
+	x = get_size_stack(*stack_a) / 10;
+	tmp = (*stack_a);
+	printf("J = %d\n", arr[x * j]);
+	printf("K = %d\n", arr[x * k]);
+	while (i < get_size_stack(*stack_a))
+	{
+		if (tmp->num >= arr[x * j] && tmp->num <= arr[x * k])
+		{
+			printlist(*stack_b, "B");
+			help_organize(i, stack_a, stack_b);
+			tmp = (*stack_a);
+			printf("%d\n", tmp->num);
+			printlist(*stack_b, "B");
+			i = 0;	
 		}
 		i++;
 		tmp = tmp->next;
