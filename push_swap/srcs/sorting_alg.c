@@ -6,13 +6,13 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:59:45 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/15 20:10:04 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/17 13:50:59 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	check_sorted_list(t_stack *stack)
+int	check_sorted_list(t_stk *stack)
 {
 	int	i;
 
@@ -28,9 +28,9 @@ int	check_sorted_list(t_stack *stack)
 	return (i);
 }
 
-void	short_sort(t_stack **stack_a)
+void	short_sort(t_stk **stack_a)
 {
-	t_stack	*tmp;
+	t_stk	*tmp;
 
 	tmp = (*stack_a)->next;
 	if (((*stack_a)->num > tmp->num) && (tmp->num < tmp->next->num)
@@ -56,7 +56,7 @@ void	short_sort(t_stack **stack_a)
 		op_rra(stack_a);
 }
 
-// void	help_organize2(int i, t_stack **stack_a, t_stack **stack_b)
+// void	help_organize2(int i, t_stk **stack_a, t_stk **stack_b)
 // {
 // 	if (i > (get_size_stack(*stack_a) / 2))
 // 	{
@@ -78,7 +78,7 @@ void	short_sort(t_stack **stack_a)
 // 	}
 // }
 
-void	check_stack_b(t_stack **stack_b)
+void	check_stack_b(t_stk **stack_b)
 {
 	if ((*stack_b)->next == NULL)
 		return ;
@@ -86,7 +86,7 @@ void	check_stack_b(t_stack **stack_b)
 		op_sb(stack_b);
 }
 
-void	help_organize(int i, t_stack **stack_a, t_stack **stack_b)
+void	help_organize(int i, t_stk **stack_a, t_stk **stack_b)
 {
 	if (i > (get_size_stack(*stack_a) / 2))
 	{
@@ -109,12 +109,12 @@ void	help_organize(int i, t_stack **stack_a, t_stack **stack_b)
 }
 
 void	
-	organize_any_element(t_stack **stack_a, t_stack **stack_b, int *arr, int j)
+	organize_any_element(t_stk **stack_a, t_stk **stack_b, int *arr, int j)
 {
 	int		i;
 	int		k;
 	int		x;
-	t_stack	*tmp;
+	t_stk	*tmp;
 
 	i = 0;
 	k = j + 1;
@@ -133,7 +133,7 @@ void
 	}
 }
 
-void	help_organize2(int i, t_stack **stack_a, t_stack **stack_b)
+void	help_organize2(int i, t_stk **stack_a, t_stk **stack_b)
 {
 	if (i > (get_size_stack(*stack_b) / 2))
 	{
@@ -155,9 +155,9 @@ void	help_organize2(int i, t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	organize_any_element2(t_stack **stack_a, t_stack **stack_b, int *arr, int j)
+void	organize_any_element2(t_stk **stack_a, t_stk **stack_b, int *arr, int j)
 {
-	t_stack	*tmp;
+	t_stk	*tmp;
 	int		i;
 
 	tmp = (*stack_b);

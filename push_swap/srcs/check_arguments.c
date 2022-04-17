@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:12:17 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2022/04/12 09:17:27 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/17 13:52:30 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int is_valid_arg(char *str)
     return (1);
 }
 
-int	get_size_stack(t_stack *s)
+int	get_size_stack(t_stk *s)
 {
 	int	i;
 
@@ -62,10 +62,10 @@ int	get_size_stack(t_stack *s)
 	return (i);
 }
 
-int has_duplicates(t_stack *s)
+int has_duplicates(t_stk *s)
 {
-	t_stack *current;
-	t_stack *next;
+	t_stk *current;
+	t_stk *next;
 	int cur_value;
 	unsigned int i;
 	unsigned int size;

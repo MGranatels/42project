@@ -6,13 +6,13 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:16:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/15 19:42:17 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/17 13:53:07 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	printlist(t_stack *n, char *list)
+void	printlist(t_stk *n, char *list)
 {
 	ft_printf("\n=======%s=======\n", list);
 	while (n)
@@ -23,11 +23,11 @@ void	printlist(t_stack *n, char *list)
 	ft_printf("\n===============\n");
 }
 
-t_stack	*create_new_node(int value)
+t_stk	*create_new_node(int value)
 {
-	t_stack	*s;
+	t_stk	*s;
 
-	s = (t_stack *)malloc(sizeof(t_stack));
+	s = (t_stk *)malloc(sizeof(t_stk));
 	if (!s)
 		return (0);
 	s->num = value;
@@ -48,9 +48,9 @@ void	clean_split(char **split)
 	free(split);
 }
 
-void	clean_stack(t_stack	*s)
+void	clean_stack(t_stk	*s)
 {
-	t_stack	*temp;
+	t_stk	*temp;
 
 	if (s)
 	{
@@ -64,7 +64,7 @@ void	clean_stack(t_stack	*s)
 	}
 }
 
-t_stack	*add_elements_to_list2(char **split, t_stack *head, t_stack *stack)
+t_stk	*add_elements_to_list2(char **split, t_stk *head, t_stk *stack)
 {
 	int	j;
 
@@ -87,11 +87,11 @@ t_stack	*add_elements_to_list2(char **split, t_stack *head, t_stack *stack)
 	return (head);
 }
 
-t_stack	*add_elements_to_list(int ac, char **av)
+t_stk	*add_elements_to_list(int ac, char **av)
 {
-	t_stack	*stack;
+	t_stk	*stack;
 	char	**split;
-	t_stack  *head;
+	t_stk  *head;
 
 	stack = NULL;
  		head = NULL;

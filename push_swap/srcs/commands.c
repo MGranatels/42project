@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:03:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/11 20:48:50 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/17 13:52:55 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_swap(t_stack *node)
+void	ft_swap(t_stk *node)
 {
 	int	tmp;
 
@@ -22,10 +22,10 @@ void	ft_swap(t_stack *node)
 }
 
 // Rotation makes nb go one node up - First becames the last
-void	ft_rotate(t_stack **head)
+void	ft_rotate(t_stk **head)
 {
-	t_stack	*first;
-	t_stack	*last;
+	t_stk	*first;
+	t_stk	*last;
 
 	first = *head;
 	last = *head;
@@ -37,10 +37,10 @@ void	ft_rotate(t_stack **head)
 }
 
 // Rotation makes nb go one node down - First becames secound last bc first
-void	ft_rotate2(t_stack **head)
+void	ft_rotate2(t_stk **head)
 {
-	t_stack	*sec_last;
-	t_stack	*last;
+	t_stk	*sec_last;
+	t_stk	*last;
 
 	sec_last = NULL;
 	last = *head;
@@ -54,7 +54,7 @@ void	ft_rotate2(t_stack **head)
 	*head = last;
 }
 
-void	add_front(t_stack **top, t_stack *n)
+void	add_front(t_stk **top, t_stk *n)
 {
 	n->next = (*top);
 	n->prev = NULL;
@@ -63,14 +63,14 @@ void	add_front(t_stack **top, t_stack *n)
 	(*top) = n;
 }
 
-void	ft_push(t_stack **stack_a, t_stack **stack_b)
+void	ft_push(t_stk **stack_a, t_stk **stack_b)
 {
-	t_stack	*tmp;
+	t_stk	*tmp;
 
 	tmp = NULL;
 	if (*stack_b == NULL && *stack_a)
 	{
-		*stack_b = (t_stack *)malloc(sizeof(t_stack));
+		*stack_b = (t_stk *)malloc(sizeof(t_stk));
 		(*stack_b)->prev = NULL;
 		(*stack_b)->num = (*stack_a)->num;
 		(*stack_b)->next = NULL;
@@ -79,7 +79,7 @@ void	ft_push(t_stack **stack_a, t_stack **stack_b)
 	}
 	else if (*stack_a)
 	{
-		tmp = (t_stack *)malloc(sizeof(t_stack));
+		tmp = (t_stk *)malloc(sizeof(t_stk));
 		tmp->num = (*stack_a)->num;
 		tmp->next = NULL;
 		tmp->prev = NULL;

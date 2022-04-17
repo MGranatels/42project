@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:21:57 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/15 20:20:57 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/17 13:51:10 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int ac, char **av)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stk	*stack_a;
+	t_stk	*stack_b;
 	int		argms;
 	int		*arr;
 	int		j;

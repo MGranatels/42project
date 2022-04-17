@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   array.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:34:19 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2022/04/11 20:44:28 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2022/04/17 13:52:37 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	insertion_sort(int arr[], int n)
 	}
 }
 
-int	*insert_array(t_stack *stack_a, int argms)
+int	*insert_array(t_stk *stack_a, int argms)
 {
 	int	*arr;
 	int	i;
