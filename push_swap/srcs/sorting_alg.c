@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:59:45 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/17 13:50:59 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/17 17:31:04 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,55 +28,7 @@ int	check_sorted_list(t_stk *stack)
 	return (i);
 }
 
-void	short_sort(t_stk **stack_a)
-{
-	t_stk	*tmp;
 
-	tmp = (*stack_a)->next;
-	if (((*stack_a)->num > tmp->num) && (tmp->num < tmp->next->num)
-		&& ((*stack_a)->num < tmp->next->num))
-		op_sa(stack_a);
-	else if ((*stack_a)->num < tmp->num && tmp->num > tmp->next->num
-		&& (*stack_a)->num < tmp->next->num)
-	{
-		op_sa(stack_a);
-		op_ra(stack_a);
-	}
-	else if ((*stack_a)->num > tmp->num && tmp->num > tmp->next->num
-		&& (*stack_a)->num > tmp->next->num)
-	{
-		op_sa(stack_a);
-		op_rra(stack_a);
-	}
-	else if ((*stack_a)->num > tmp->num && tmp->num < tmp->next->num
-		&& (*stack_a)->num > tmp->next->num)
-		op_ra(stack_a);
-	else if ((*stack_a)->num < tmp->num && tmp->num > tmp->next->num
-		&& (*stack_a)->num > tmp->next->num)
-		op_rra(stack_a);
-}
-
-// void	help_organize2(int i, t_stk **stack_a, t_stk **stack_b)
-// {
-// 	if (i > (get_size_stack(*stack_a) / 2))
-// 	{
-// 		while (i < get_size_stack(*stack_a))
-// 		{
-// 			op_rra(stack_a);
-// 			i++;
-// 		}
-// 		op_pb(stack_b, stack_a);
-// 	}
-// 	else
-// 	{
-// 		while (i != 0)
-// 		{
-// 			op_ra(stack_a);
-// 			i--;
-// 		}
-// 		op_pb(stack_b, stack_a);
-// 	}
-// }
 
 void	check_stack_b(t_stk **stack_b)
 {
@@ -99,7 +51,7 @@ void	help_organize(int i, t_stk **stack_a, t_stk **stack_b)
 	}
 	else
 	{
-		while (i != 0)
+		while (i > 0)
 		{
 			op_ra(stack_a);
 			i--;
@@ -112,17 +64,15 @@ void
 	organize_any_element(t_stk **stack_a, t_stk **stack_b, int *arr, int j)
 {
 	int		i;
-	int		k;
 	int		x;
 	t_stk	*tmp;
 
 	i = 0;
-	k = j + 1;
-	x = get_size_stack(*stack_a) / 20;
+	x = get_size_stack(*stack_a) / 25;
 	tmp = (*stack_a);
-	while (get_size_stack(*stack_b) <= 20 * k)
+	while (tmp)
 	{
-		if (tmp->num >= arr[0] && tmp->num <= arr[20 * k])
+		if (tmp->num <= arr[25 * j])
 		{
 			help_organize(i, stack_a, stack_b);
 			tmp = (*stack_a);
@@ -162,7 +112,7 @@ void	organize_any_element2(t_stk **stack_a, t_stk **stack_b, int *arr, int j)
 
 	tmp = (*stack_b);
 	i = 0;
-	while (tmp != NULL)
+	while (tmp)
 	{
 		if (tmp->num == arr[j])
 		{
@@ -173,9 +123,12 @@ void	organize_any_element2(t_stk **stack_a, t_stk **stack_b, int *arr, int j)
 		{
 			op_pa(stack_b, stack_a);
 			op_pa(stack_b, stack_a);
+			if ((*stack_a)->num > (*stack_a)->next->num)
+				op_sa(stack_a);
 			break ;
 		}
 		i++;
 		tmp = tmp->next;
 	}	
 }
+
