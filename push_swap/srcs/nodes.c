@@ -6,22 +6,22 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:16:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/17 13:53:07 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:09:08 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	printlist(t_stk *n, char *list)
-{
-	ft_printf("\n=======%s=======\n", list);
-	while (n)
-	{
-		ft_printf("%d ", n->num);
-		n = n->next;
-	}
-	ft_printf("\n===============\n");
-}
+// void	printlist(t_stk *n, char *list)
+// {
+// 	ft_printf("\n=======%s=======\n", list);
+// 	while (n)
+// 	{
+// 		ft_printf("%d ", n->num);
+// 		n = n->next;
+// 	}
+// 	ft_printf("\n===============\n");
+// }
 
 t_stk	*create_new_node(int value)
 {
@@ -52,15 +52,12 @@ void	clean_stack(t_stk	*s)
 {
 	t_stk	*temp;
 
-	if (s)
+	temp = s;
+	while (temp)
 	{
-		s->next = 0;
-		while (s)
-		{
-			temp = s->next;
-			free(s);
-			s = temp;
-		}
+		s = temp->next;
+		free(temp);
+		temp = s;
 	}
 }
 
@@ -91,10 +88,10 @@ t_stk	*add_elements_to_list(int ac, char **av)
 {
 	t_stk	*stack;
 	char	**split;
-	t_stk  *head;
+	t_stk	*head;
 
 	stack = NULL;
- 		head = NULL;
+	head = NULL;
 	while (--ac > 0)
 	{
 		split = ft_split(av[ac], ' ');

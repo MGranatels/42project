@@ -6,78 +6,91 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 16:22:05 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/17 18:56:46 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:22:25 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include <stdlib.h>
 
-t_stk	*big_stack(t_stk *stack_a, t_stk *stack_b, int size, int *arr)
+t_stk	*big_stack(t_stk *stk_a, t_stk *stk_b, int size, int *arr)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (j < (size / 25))
 	{
-		organize_any_element(&stack_a, &stack_b, arr, j);
+		organize_any_element(&stk_a, &stk_b, arr, j);
 		j++;
 	}
-	while (stack_a)
+	while (stk_a)
 	{
-		op_pb(&stack_b, &stack_a);
+		op_pb(&stk_b, &stk_a);
 	}	
 	size = size - 1;
-	while (stack_b)
+	while (stk_b)
 	{
-		organize_any_element2(&stack_a, &stack_b, arr, size);
+		organize_any_element2(&stk_a, &stk_b, arr, size);
 		size--;
 	}
-	return (stack_a);
+	return (stk_a);
 }
 
-t_stk	*short_stack(t_stk *stack_a, t_stk *stack_b, int size, int *arr)
+t_stk	*short_stack(t_stk *stk_a, t_stk *stk_b, int size, int *arr)
 {
 	if (size == 3)
-		stack_a = short_sort_3(&stack_a);
+		stk_a = short_sort_3(&stk_a);
 	else if (size == 5)
-		stack_a = short_sort_5(&stack_a, &stack_b, arr);
-	else 
+		stk_a = short_sort_5(&stk_a, &stk_b, arr);
+	else
 	{
-		while (stack_a)
-			op_pb(&stack_b, &stack_a);
+		while (stk_a)
+			op_pb(&stk_b, &stk_a);
 		size = size - 1;
-		while (stack_b)
+		while (stk_b)
 		{
-			organize_any_element2(&stack_a, &stack_b, arr, size);
+			organize_any_element2(&stk_a, &stk_b, arr, size);
 			size--;
 		}
 	}
-	return (stack_a);
+	return (stk_a);
 }
 
-t_stk	*check_sort_algr(int size, t_stk *stack_a, t_stk *stack_b)
+t_stk	*check_sort_algr(int size, t_stk *stk_a, t_stk *stk_b)
 {
-	int j;
-	int *arr;
-	
-	arr = insert_array(stack_a, size);
+	int	j;
+	int	*arr;
+
+	arr = insert_array(stk_a, size);
 	j = 0;
 	if (size >= 25)
-		stack_a = big_stack(stack_a, stack_b, size, arr);
+		stk_a = big_stack(stk_a, stk_b, size, arr);
 	else
-		stack_a = short_stack(stack_a, stack_b, size, arr);
-	return (stack_a);
+		stk_a = short_stack(stk_a, stk_b, size, arr);
+	if (arr)
+		free(arr);
+	return (stk_a);
 }
 
-
-int main (int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_stk	*stack_a;
-	t_stk	*stack_b;
+	t_stk	*stk_a;
+	t_stk	*stk_b;
 	int		size;
 
-	stack_b = NULL;
-	stack_a = add_elements_to_list(ac, av);
-	size = get_size_stack(stack_a);
-	stack_a = check_sort_algr(size ,stack_a, stack_b);
+	if (ac == 1)
+		return (0);
+	stk_b = NULL;
+	stk_a = add_elements_to_list(ac, av);
+	size = get_size_stack(stk_a);
+	if (size == 2)
+	{
+		if (stk_a->num > stk_a->next->num)
+			op_sa(&stk_a);
+		return (0);
+	}
+	stk_a = check_sort_algr(size, stk_a, stk_b);
+	clean_stack(stk_a);
+	clean_stack(stk_b);
+	system("leaks -- push_swap");
 }

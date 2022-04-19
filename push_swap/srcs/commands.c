@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:03:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/17 13:52:55 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:22:16 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,20 @@ void	ft_push(t_stk **stack_a, t_stk **stack_b)
 	t_stk	*tmp;
 
 	tmp = NULL;
-	if (*stack_b == NULL && *stack_a)
+	if (stack_a && *stack_a)
 	{
-		*stack_b = (t_stk *)malloc(sizeof(t_stk));
-		(*stack_b)->prev = NULL;
-		(*stack_b)->num = (*stack_a)->num;
-		(*stack_b)->next = NULL;
-		*stack_a = (*stack_a)->next;
-		(*stack_a)->prev = NULL;
-	}
-	else if (*stack_a)
-	{
-		tmp = (t_stk *)malloc(sizeof(t_stk));
-		tmp->num = (*stack_a)->num;
-		tmp->next = NULL;
-		tmp->prev = NULL;
-		add_front(stack_b, tmp);
-		*stack_a = (*stack_a)->next;
+		if (stack_b && !*stack_b)
+		{
+			*stack_b = *stack_a;
+			*stack_a = (*stack_a)->next;
+			(*stack_b)->next = NULL;
+		}
+		else
+		{
+			tmp = *stack_b;
+			*stack_b = *stack_a;
+			*stack_a = (*stack_a)->next;
+			(*stack_b)->next = tmp;
+		}
 	}
 }

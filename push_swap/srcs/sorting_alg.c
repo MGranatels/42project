@@ -6,37 +6,11 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:59:45 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/17 17:31:04 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:49:11 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-int	check_sorted_list(t_stk *stack)
-{
-	int	i;
-
-	i = 1;
-	if (!stack)
-		return (0);
-	while (stack->next)
-	{
-		if (stack->num > stack->next->num)
-			i = 0;
-		stack = stack->next;
-	}
-	return (i);
-}
-
-
-
-void	check_stack_b(t_stk **stack_b)
-{
-	if ((*stack_b)->next == NULL)
-		return ;
-	else if ((*stack_b)->num < (*stack_b)->next->num)
-		op_sb(stack_b);
-}
 
 void	help_organize(int i, t_stk **stack_a, t_stk **stack_b)
 {
@@ -131,4 +105,3 @@ void	organize_any_element2(t_stk **stack_a, t_stk **stack_b, int *arr, int j)
 		tmp = tmp->next;
 	}	
 }
-

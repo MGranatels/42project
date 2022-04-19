@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:20:03 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/17 13:53:20 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:17:30 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	op_ss(t_stk **stack_a, t_stk **stack_b)
 	ft_printf("sb\n");
 }
 
-void	op_pa(t_stk **stack_a, t_stk **stack_b){
+void	op_pa(t_stk **stack_a, t_stk **stack_b)
+{
 	ft_push(stack_a, stack_b);
 	ft_printf("pa\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:34:19 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2022/04/17 13:52:37 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:34:14 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ void	insertion_sort(int arr[], int n)
 	}
 }
 
-int	*insert_array(t_stk *stack_a, int argms)
+int	*insert_array(t_stk *stk_a, int argms)
 {
 	int	*arr;
 	int	i;
 
 	arr = malloc(sizeof(int) * argms + 1);
 	i = 0;
-	while (stack_a)
+	while (stk_a)
 	{
-		arr[i++] = stack_a->num;
-		stack_a = stack_a->next;
+		arr[i++] = stk_a->num;
+		stk_a = stk_a->next;
 	}
 	insertion_sort(arr, i);
 	return (arr);
