@@ -3,26 +3,114 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 16:22:05 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/19 21:22:25 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/21 15:07:51 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdlib.h>
+
+int	first_look(t_stk **stk, int *arr, int j)
+{
+	int	i;
+	t_stk	*tmp;
+
+	tmp = *stk;
+	i = 0;
+	while (tmp)
+	{
+		if (tmp->num <= arr[25 * j])
+			break ;
+		i ++;
+		tmp = tmp->next;
+	}
+	return (i);
+}	
+
+int	last_look(t_stk **stk, int size, int *arr, int j)
+{
+	int	i;
+	int c;
+	int total;
+	t_stk *tmp;
+	
+	tmp = *stk;
+	c = 0;
+	i = 0;
+	while (tmp != NULL)
+	{
+		if (tmp->num <= arr[25 * j])
+			c = i;
+		i++;
+		tmp = tmp->next;
+	}
+	total = size - c;
+	return (total);
+}	
+
+void	help_organize_test(int c, int c1, t_stk **stack_a, t_stk **stack_b)
+{
+	if (c < c1)
+	{
+		while (c > 0)
+		{
+			op_rra(stack_a);
+			c--;
+		}
+		op_pb(stack_b, stack_a);
+	}
+	else
+	{
+		while (c1 > 0)
+		{
+			op_ra(stack_a);
+			c1--;
+		}
+		op_pb(stack_b, stack_a);
+	}
+}
+void	
+	organize_any_element_test(t_stk **stk_a, t_stk **stk_b, int *arr, int j, int size)
+{
+	int		i;
+	t_stk	*tmp;
+	int c;
+	int c1;
+
+	i = 0;
+	tmp = (*stk_a);
+	while (tmp)
+	{
+		if (tmp->num <= arr[25 * j])
+		{
+			c = last_look(stk_a, size, arr, j);
+			c1 = first_look(stk_a, arr, j);
+			help_organize_test(c, c1, stk_a, stk_b);
+			tmp = (*stk_a);
+			i = 0;
+		}
+		i++;
+		tmp = tmp->next;
+	}
+}
 
 t_stk	*big_stack(t_stk *stk_a, t_stk *stk_b, int size, int *arr)
 {
 	int	j;
 
-	j = 0;
+	j = 1;
 	while (j < (size / 25))
 	{
-		organize_any_element(&stk_a, &stk_b, arr, j);
+		organize_any_element_test(&stk_a, &stk_b, arr, j, size);
 		j++;
 	}
+	// while (j < (size / 25))
+	// {
+	// 	organize_any_element(&stk_a, &stk_b, arr, j);
+	// 	j++;
+	// }
 	while (stk_a)
 	{
 		op_pb(&stk_b, &stk_a);
@@ -87,10 +175,12 @@ int	main(int ac, char **av)
 	{
 		if (stk_a->num > stk_a->next->num)
 			op_sa(&stk_a);
-		return (0);
+		clean_stack(&stk_a);
+		clean_stack(&stk_b);
+		return (0); 	
 	}
 	stk_a = check_sort_algr(size, stk_a, stk_b);
-	clean_stack(stk_a);
-	clean_stack(stk_b);
+	clean_stack(&stk_a);
+	clean_stack(&stk_b);
 	system("leaks -- push_swap");
 }

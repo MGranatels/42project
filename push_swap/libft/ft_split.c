@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:50:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/02/28 14:51:25 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/20 13:17:26 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,4 @@ char	**ft_split(char const *s, char c)
 	lst[i] = NULL;
 	return (lst);
 }
+

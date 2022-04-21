@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_alg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 18:59:45 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/19 20:49:11 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/21 11:40:05 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void
 	organize_any_element(t_stk **stack_a, t_stk **stack_b, int *arr, int j)
 {
 	int		i;
-	int		x;
 	t_stk	*tmp;
 
 	i = 0;
-	x = get_size_stack(*stack_a) / 25;
 	tmp = (*stack_a);
 	while (tmp)
 	{

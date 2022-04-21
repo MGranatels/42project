@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nodes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:16:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/19 21:09:08 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/20 13:23:55 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,21 @@ void	clean_split(char **split)
 	free(split);
 }
 
-void	clean_stack(t_stk	*s)
+void	clean_stack(t_stk	**s)
 {
-	t_stk	*temp;
+	t_stk	*tmp;
 
-	temp = s;
-	while (temp)
+	if (*s)
 	{
-		s = temp->next;
-		free(temp);
-		temp = s;
+		while (*s)
+		{
+			tmp = (*s)->next;
+			free(*s);
+			*s = NULL;
+			(*s) = tmp;
+		}
+		free(*s);
+		*s = NULL;
 	}
 }
 
@@ -103,7 +108,7 @@ t_stk	*add_elements_to_list(int ac, char **av)
 	if (has_duplicates(head))
 	{
 		ft_printf("Error\n");
-		clean_stack(head);
+		clean_stack(&head);
 		return (0);
 	}
 	return (head);

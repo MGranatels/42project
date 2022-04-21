@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:53:22 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/19 21:06:34 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/20 13:22:52 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	printlist(t_stk *n, char *list);
 void	insertion_sort(int arr[], int n);
 void	organize_any_element(t_stk **stk_a, t_stk **stk_b, int *arr, int j);
 void	organize_any_element2(t_stk **stk_a, t_stk **stk_b, int *arr, int j);
-void	clean_stack(t_stk	*s);
+void	clean_stack(t_stk	**s);
 
 int		is_valid_arg(char *str);
 int		get_size_stack(t_stk *s);
