@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   array.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:34:19 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2022/04/19 20:34:14 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/26 09:33:48 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	insertion_sort(int arr[], int n)
+static void	insertion_sort(int arr[], int n)
 {
 	int	i;
 	int	key;

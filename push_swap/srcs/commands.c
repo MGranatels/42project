@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:03:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/19 21:22:16 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/26 09:38:33 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,6 @@ void	ft_rotate2(t_stk **head)
 	sec_last->next = NULL;
 	last->next = *head;
 	*head = last;
-}
-
-void	add_front(t_stk **top, t_stk *n)
-{
-	n->next = (*top);
-	n->prev = NULL;
-	if (*top != NULL)
-		(*top)->prev = n;
-	(*top) = n;
 }
 
 void	ft_push(t_stk **stack_a, t_stk **stack_b)

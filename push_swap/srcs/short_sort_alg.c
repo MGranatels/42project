@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   short_sort_alg.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:30:48 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/19 20:44:30 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/04/28 11:24:48 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,46 @@ t_stk	**finish_sorting(t_stk **stk_a, t_stk **stk_b)
 	op_ra(stk_a);
 	return (stk_a);
 }
-
 t_stk	*short_sort_5(t_stk **stk_a, t_stk **stk_b, int *arr)
 {
-	t_stk	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = (*stk_a);
-	while (tmp != NULL)
+	while (get_size_stack(*stk_a) > 3)
 	{
-		if (tmp->num >= arr[3])
-		{
-			while (i != 0)
-			{
-				op_ra(stk_a);
-				i--;
-			}
+		if ((*stk_a)->num > arr[2])
 			op_pb(stk_b, stk_a);
-			tmp = (*stk_a);
-			if (tmp->num == arr[3] || tmp->num == arr[4])
-				op_pb(stk_b, stk_a);
-			i = 0;
-		}
-		i++;
-		tmp = tmp->next;
+		else
+			op_ra(stk_a);
 	}
 	stk_a = finish_sorting(stk_a, stk_b);
-	return ((*stk_a));
+	return (*stk_a);
 }
+// t_stk	*short_sort_5(t_stk **stk_a, t_stk **stk_b, int *arr)
+// {
+// 	t_stk	*tmp;
+// 	int		i;
+
+// 	i = 1;
+// 	tmp = (*stk_a);
+// 	while (tmp != NULL)
+// 	{
+// 		if (tmp->num > arr[2])
+// 		{
+// 			while (--i > 0)
+// 				op_ra(stk_a);
+// 			op_pb(stk_b, stk_a);
+// 			tmp = (*stk_a);
+// 			if (tmp->num > arr[3])
+// 			{
+// 				op_pb(stk_b, stk_a);
+// 				ft_printf("DEBUGG1");
+// 			}
+// 			i = 0;
+// 		}
+// 		i++;
+// 		tmp = tmp->next;
+// 	}
+// 	stk_a = finish_sorting(stk_a, stk_b);
+// 	return ((*stk_a));
+// }
 
 t_stk	*short_sort_3(t_stk **stk_a)
 {

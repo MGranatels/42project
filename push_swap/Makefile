@@ -33,6 +33,8 @@ PS_FILES	=	commands.c			\
 				sorting_alg.c		\
 				check_arguments.c	\
 				short_sort_alg.c    \
+				check_sorting.c		\
+				sort_big.c			\
 				array.c
 
 # C_FILES		=	c_srcs/c_main.c	

@@ -6,7 +6,7 @@
 /*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:16:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/20 13:23:55 by anne-sophie      ###   ########.fr       */
+/*   Updated: 2022/04/29 09:51:11 by anne-sophie      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // 	ft_printf("\n===============\n");
 // }
 
-t_stk	*create_new_node(int value)
+static t_stk	*create_new_node(int value)
 {
 	t_stk	*s;
 
@@ -35,7 +35,7 @@ t_stk	*create_new_node(int value)
 	return (s);
 }
 
-void	clean_split(char **split)
+static void	clean_split(char **split)
 {
 	int	i;
 
@@ -66,7 +66,8 @@ void	clean_stack(t_stk	**s)
 	}
 }
 
-t_stk	*add_elements_to_list2(char **split, t_stk *head, t_stk *stack)
+static t_stk
+	*add_elements_to_list2(char **split, t_stk *head, t_stk *stack)
 {
 	int	j;
 
@@ -83,6 +84,7 @@ t_stk	*add_elements_to_list2(char **split, t_stk *head, t_stk *stack)
 		{
 			ft_printf("Error\n");
 			clean_split(split);
+			clean_stack(&head);
 			return (0);
 		}
 	}
