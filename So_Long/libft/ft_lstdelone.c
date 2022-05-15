@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations3.c                                      :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 15:35:01 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/30 16:58:30 by mgranate         ###   ########.fr       */
+/*   Created: 2022/02/25 15:24:25 by mgranate          #+#    #+#             */
+/*   Updated: 2022/02/27 16:26:59 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	op_rrr(t_stk **stack_a, t_stk **stack_b)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	ft_rotate2(stack_b);
-	ft_rotate2(stack_a);
-	ft_printf("rrr\n");
+	del(lst->content);
+	free(lst);
 }

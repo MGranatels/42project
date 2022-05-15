@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations3.c                                      :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 15:35:01 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/30 16:58:30 by mgranate         ###   ########.fr       */
+/*   Created: 2022/02/23 15:48:11 by mgranate          #+#    #+#             */
+/*   Updated: 2022/02/25 19:37:25 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	op_rrr(t_stk **stack_a, t_stk **stack_b)
+void	ft_putendl_fd(char *s, int fd)
 {
-	ft_rotate2(stack_b);
-	ft_rotate2(stack_a);
-	ft_printf("rrr\n");
+	int	i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
+	write (fd, "\n", 1);
 }

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations3.c                                      :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 15:35:01 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/30 16:58:30 by mgranate         ###   ########.fr       */
+/*   Created: 2022/02/23 15:29:56 by mgranate          #+#    #+#             */
+/*   Updated: 2022/02/25 19:55:12 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	op_rrr(t_stk **stack_a, t_stk **stack_b)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	ft_rotate2(stack_b);
-	ft_rotate2(stack_a);
-	ft_printf("rrr\n");
+	unsigned int		i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}	
 }

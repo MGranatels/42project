@@ -1,0 +1,2 @@
+MLX MAN ENTRY: 	cc -I /usr/local/include test.c -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations3.c                                      :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 15:35:01 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/30 16:58:30 by mgranate         ###   ########.fr       */
+/*   Created: 2022/02/18 14:05:40 by mgranate          #+#    #+#             */
+/*   Updated: 2022/02/18 17:06:24 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	op_rrr(t_stk **stack_a, t_stk **stack_b)
+char	*ft_strrchr(const char *s, int c)
 {
-	ft_rotate2(stack_b);
-	ft_rotate2(stack_a);
-	ft_printf("rrr\n");
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	while (i > 0)
+	{
+		if (s[i] == (char)c)
+			return ((char *) s + i);
+		i--;
+	}
+	if (s[i] == (char)c)
+		return ((char *) s + i);
+	return (0);
 }

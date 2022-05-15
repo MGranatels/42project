@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 16:22:05 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/28 12:05:43 by anne-sophie      ###   ########.fr       */
+/*   Updated: 2022/05/04 15:50:29 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 			op_sa(&stk_a);
 		clean_stack(&stk_a);
 		clean_stack(&stk_b);
-		return (0); 	
+		return (0);
 	}
 	stk_a = check_sort_algr(size, stk_a, stk_b);
 	clean_stack(&stk_a);

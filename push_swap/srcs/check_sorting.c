@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_sorting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 09:20:06 by anne-sophie       #+#    #+#             */
-/*   Updated: 2022/04/28 11:49:48 by anne-sophie      ###   ########.fr       */
+/*   Updated: 2022/04/30 17:00:30 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_stk	*big_stack(t_stk *stk_a, t_stk *stk_b, int size, int *arr)
 {
 	int	j;
-	int brk;
+	int	brk;
 
 	j = 1;
 	if (size == 500)
@@ -26,7 +26,7 @@ t_stk	*big_stack(t_stk *stk_a, t_stk *stk_b, int size, int *arr)
 		brk = 30;
 	while (j < (size / brk))
 	{
-		organize_any_element(&stk_a, &stk_b, arr, j, size);
+		organize_any_element(&stk_a, &stk_b, arr, j);
 		j++;
 	}
 	while (stk_a)
@@ -59,7 +59,8 @@ t_stk	*short_stack(t_stk *stk_a, t_stk *stk_b, int size, int *arr)
 	}
 	return (stk_a);
 }
-int		check_sorted_list(t_stk **stack)
+
+int	check_sorted_list(t_stk **stack)
 {
 	t_stk	*tmp;
 
@@ -72,6 +73,7 @@ int		check_sorted_list(t_stk **stack)
 	}
 	return (1);
 }
+
 t_stk	*check_sort_algr(int size, t_stk *stk_a, t_stk *stk_b)
 {
 	int	j;

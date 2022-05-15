@@ -3,23 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:53:22 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/28 11:44:44 by anne-sophie      ###   ########.fr       */
+/*   Updated: 2022/04/30 20:33:06 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
-# include <limits.h>
-# include <ctype.h>
 # include "../libft/libft.h"
-# include <stdio.h>
 # include "../printf/ft_printf.h"
 
 typedef struct s_stack
@@ -28,16 +23,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }			t_stk;
-
-// typedef struct s_list
-// {
-// 	int				min;
-// 	int				max;
-// 	int				size;
-// 	struct s_list	*next;
-// 	struct s_stack	*end;
-// 	t_stk			*(*add)(int ac, char **av, struct s_list list);
-// }			t_list;
 
 void	ft_swap(t_stk *node);
 void	ft_rotate(t_stk **head);
@@ -55,10 +40,11 @@ void	op_rr(t_stk **stk_a, t_stk **stk_b);
 void	op_rra(t_stk **stk_a);
 void	op_rrb(t_stk **stk_b);
 void	op_rrr(t_stk **stk_a, t_stk **stk_b);
-void	printlist(t_stk *n, char *list);
+
+//void	printlist(t_stk *n, char *list);
 void	clean_stack(t_stk	**s);
-void	organize_any_element(t_stk **stk_a, t_stk **stk_b, int *arr, int j, int size);
-void	organize_any_element2(t_stk **stack_a, t_stk **stack_b, int *arr, int j);
+void	organize_any_element2(t_stk **stk_a, t_stk **stk_b, int *arr, int j);
+void	organize_any_element(t_stk **stk_a, t_stk **stk_b, int *arr, int j);
 
 int		is_valid_arg(char *str);
 int		get_size_stack(t_stk *s);

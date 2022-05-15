@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   nodes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anne-sophie <anne-sophie@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:16:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/04/29 09:51:11 by anne-sophie      ###   ########.fr       */
+/*   Updated: 2022/05/04 16:00:08 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include <stdlib.h>
 
 // void	printlist(t_stk *n, char *list)
 // {
@@ -85,6 +86,7 @@ static t_stk
 			ft_printf("Error\n");
 			clean_split(split);
 			clean_stack(&head);
+			system("leaks -- push_swap");
 			return (0);
 		}
 	}
@@ -106,12 +108,14 @@ t_stk	*add_elements_to_list(int ac, char **av)
 		if (head == NULL)
 			return (0);
 	}
-	clean_split(split);
 	if (has_duplicates(head))
 	{
 		ft_printf("Error\n");
+		clean_split(split);
 		clean_stack(&head);
+		system("leaks -- push_swap");
 		return (0);
 	}
+	clean_split(split);
 	return (head);
 }

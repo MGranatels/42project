@@ -3,42 +3,56 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+         #
+#    By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 17:02:19 by mgranate          #+#    #+#              #
-#    Updated: 2022/03/16 19:28:07 by mgranate         ###   ########.fr        #
+#    Updated: 2022/05/02 18:06:19 by mgranate         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= so_long.a
+NAME		=	so_long
+CC			=	clang
+SRCS		=	srcs/test.c
 
-SRCS		=		
+LIBFT		=	libft/libft.a
+CFLAGS		=	-Wall -Wextra -Werror
+MLXFLAGS	=	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
+RM			=	rm -f
+OBJS		=	$(SRCS:%.c=%.o)
 
-OBJS		= $(SRCS:.c=.o)
+ifeq ($(shell uname), Linux)
+MLXFLAGS	=	-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
+endif
 
-CC			= gcc
-
-RM			= rm -f
-
-CFLAGS		= -Wall -Werror -Wextra -Imlx -c -I.
-
-.c.o:		$(OBJS)
-				$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) 
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-				@ar rcs $(CC) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+			make -C libft	
+			make clean -C libft
+			$(CC) $(SRCS) $(LIBFT) $(MLXFLAGS) $(CFLAGS) -o $(NAME)
+
+%o:			%.c
+			$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
+run:		all
+			./$(NAME) maps/map_bonus.ber
 
 clean:
-				$(RM) $(OBJS)
+			$(RM) $(OBJS)
 
-fclean: 	clean
-				$(RM) $(NAME)
+fclean:		clean
+			$(RM) $(NAME)
+			$(RM) *.out
+			make fclean -C libft/
 
-re: 		fclean all
+re:			fclean all
 
-bonus:		$(OBJS)
-			ar rcs $(NAME) $(OBJS)
+git:
+	@git add .
+	@git commit -m "$m"
+	@git push
+	@echo "Commit sent to github"
+# To call: make git m="my commit"
 
-.PHONY: 	all clean fclean re bonus .c.o
+.PHONY:		all clean fclean re
