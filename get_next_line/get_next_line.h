@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 14:10:48 by mgranate          #+#    #+#             */
-/*   Updated: 2022/03/11 17:03:02 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:32:35 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include <stddef.h>
 # include <fcntl.h>
 
-//# define BUFFER_SIZE 2
+//# define malloc(x) NULL
+# define BUFFER_SIZE 2
 
 char	*get_next_line(int fd);
 char	*ft_get_line(char *line, char *buff);

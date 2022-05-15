@@ -6,12 +6,13 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 14:38:46 by mgranate          #+#    #+#             */
-/*   Updated: 2022/03/22 16:22:03 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:53:20 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 char	*get_next_line(int fd)
 {
@@ -54,4 +55,5 @@ char	*get_next_line(int fd)
 // 		free(str);
 // 		i++;
 // 	}
+// 	system("leaks -- a.out");
 // }

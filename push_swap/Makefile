@@ -1,7 +1,7 @@
 PS_NAME		=	push_swap
 # C_NAME		=	checker
 
-CC			=	clang
+CC			=	gcc
 
 LIB_DIR		=	libft/
 LIB			=	libft.a

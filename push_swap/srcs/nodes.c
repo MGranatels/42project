@@ -6,12 +6,11 @@
 /*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:16:14 by mgranate          #+#    #+#             */
-/*   Updated: 2022/05/04 16:00:08 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:33:11 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdlib.h>
 
 // void	printlist(t_stk *n, char *list)
 // {
@@ -40,13 +39,13 @@ static void	clean_split(char **split)
 {
 	int	i;
 
-	i = 0;
-	while (split[i])
+	i = -1;
+	if (split)
 	{
-		free(split[i]);
-		i++;
+		while (split[++i])
+			free(split[i]);
+		free(split);
 	}
-	free(split);
 }
 
 void	clean_stack(t_stk	**s)
@@ -84,9 +83,7 @@ static t_stk
 		else
 		{
 			ft_printf("Error\n");
-			clean_split(split);
 			clean_stack(&head);
-			system("leaks -- push_swap");
 			return (0);
 		}
 	}
@@ -107,15 +104,14 @@ t_stk	*add_elements_to_list(int ac, char **av)
 		head = add_elements_to_list2(split, head, stack);
 		if (head == NULL)
 			return (0);
+		if (split)
+			clean_split(split);
 	}
 	if (has_duplicates(head))
 	{
 		ft_printf("Error\n");
-		clean_split(split);
 		clean_stack(&head);
-		system("leaks -- push_swap");
 		return (0);
 	}
-	clean_split(split);
 	return (head);
 }

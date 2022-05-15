@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 14:10:23 by mgranate          #+#    #+#             */
-/*   Updated: 2022/03/07 20:09:45 by mgranate         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:31:52 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	*ft_get_line(char *line, char *buff)
 	temp = line;
 	i = 0;
 	line = malloc(sizeof(char) * ft_strlen(buff) + ft_strlen(line) + 1);
+	if (!line)
+		return (NULL);
 	while (temp && temp[i])
 	{
 		line[i] = temp[i];
